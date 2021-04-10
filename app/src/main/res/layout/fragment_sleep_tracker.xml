@@ -23,7 +23,9 @@
          the whole ViewModel, so that we can access the LiveData,
          click handlers, and state variables. -->
     <data>
-
+        <variable
+            name="sleepTrackerViewModel"
+            type="com.example.android.trackmysleepquality.sleeptracker.SleepTrackerViewModel" />
     </data>
 
     <!-- Start of the visible fragment layout using ConstraintLayout -->
@@ -45,10 +47,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/stop_button">
 
-            <!-- In the TextView, we can access the nightsString LiveData,
-                 which keeps it displayed and updated in the TextView
-                 whenever it changes. -->
-
             <TextView
                 android:id="@+id/textview"
                 android:layout_width="match_parent"
@@ -56,12 +54,8 @@
                 android:layout_marginStart="@dimen/margin"
                 android:layout_marginTop="@dimen/margin"
                 android:layout_marginEnd="@dimen/margin"
-                android:text="@string/how_was_hour_sleep" />
+                android:text="@{sleepTrackerViewModel.nightsString}" />
         </ScrollView>
-
-        <!-- With data binding and LiveData, we can track the buttons' visibility states
-             from the ViewModel. The click handler is in the ViewModel as well, and
-             you can set it for the Views using this lambda pattern. -->
 
         <Button
             android:id="@+id/start_button"
@@ -70,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
             android:text="@string/start"
+            android:onClick="@{() -> sleepTrackerViewModel.onStartTracking()}"
             app:layout_constraintBaseline_toBaselineOf="@id/stop_button"
             app:layout_constraintEnd_toStartOf="@+id/stop_button"
             app:layout_constraintHorizontal_chainStyle="spread"
@@ -80,6 +75,7 @@
             style="@style/SleepButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> sleepTrackerViewModel.onStopTracking()}"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginEnd="@dimen/margin"
             android:text="@string/stop"
@@ -96,6 +92,7 @@
             android:layout_marginEnd="@dimen/margin"
             android:layout_marginBottom="@dimen/margin"
             android:text="@string/clear"
+            android:onClick="@{() -> sleepTrackerViewModel.onClearData()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
