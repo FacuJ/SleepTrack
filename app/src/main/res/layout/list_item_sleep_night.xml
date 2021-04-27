@@ -10,9 +10,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/quality_image"
@@ -24,6 +24,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:sleepImage="@{sleep}"
             tools:srcCompat="@drawable/ic_sleep_5" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -34,6 +35,7 @@
             app:layout_constraintEnd_toEndOf="@+id/sleep_length"
             app:layout_constraintStart_toStartOf="@+id/sleep_length"
             app:layout_constraintTop_toBottomOf="@+id/sleep_length"
+            app:sleepQualityString="@{sleep}"
             tools:text="Excellent!!!" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -46,6 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/quality_image"
             app:layout_constraintTop_toTopOf="@+id/quality_image"
+            app:sleepDurationFormatted="@{sleep}"
             tools:text="Wednesday" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
