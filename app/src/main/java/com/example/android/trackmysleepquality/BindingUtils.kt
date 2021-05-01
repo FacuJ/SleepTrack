@@ -7,8 +7,8 @@ import androidx.databinding.BindingAdapter
 import com.example.android.trackmysleepquality.database.SleepNight
 
 @BindingAdapter("sleepImage")
-fun AppCompatImageView.setSleepImage(item: SleepNight) {
-    setImageResource(when (item.sleepQuality) {
+fun AppCompatImageView.setSleepImage(item: SleepNight?) {
+    setImageResource(when (item?.sleepQuality) {
         0 -> R.drawable.ic_sleep_0
         1 -> R.drawable.ic_sleep_1
         2 -> R.drawable.ic_sleep_2
