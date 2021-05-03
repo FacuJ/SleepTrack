@@ -55,7 +55,6 @@ class SleepTrackerFragment : Fragment() {
         })
         binding.rvSleepList.adapter = adapter
 
-
         viewModel.nights.observe(viewLifecycleOwner, {
             it?.let {
                 adapter.addHeaderAndSubmitList(it)
@@ -90,9 +89,6 @@ class SleepTrackerFragment : Fragment() {
                 viewModel.onSleepDataQualityNavigated()
             }
         })
-
-        adapter
-
         return binding.root
     }
 }
